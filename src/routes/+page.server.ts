@@ -1,6 +1,10 @@
 import type { PageServerLoad } from './$types';
 import { parseHTML } from "linkedom";
+<<<<<<< HEAD
 import teacherData from "$lib/data";
+=======
+
+>>>>>>> 2e030259fe92367af05ac958214548bb46426dad
 export const load = (async (e) => {
     const [table, substitutions] = await Promise.all([fetchTable(), fetchSubstitutions()]);
 
@@ -12,7 +16,10 @@ interface lesson {
     teacher: {
         link: string,
         short: string,
+<<<<<<< HEAD
         name:string
+=======
+>>>>>>> 2e030259fe92367af05ac958214548bb46426dad
     },
     classroom: {
         name: string,
@@ -48,13 +55,20 @@ async function fetchTable() {
             g!.querySelectorAll("td.l > span[style=font-size:85%]").forEach(h => {
                 const teach = h!.querySelector("a.n");
                 const clas = h!.querySelector("a.s");
+<<<<<<< HEAD
                 const short=teach?.innerHTML!
+=======
+>>>>>>> 2e030259fe92367af05ac958214548bb46426dad
                 les.push({
                     name: h.querySelector("span.p")!.innerHTML,
                     teacher: {
                         link: teach?.getAttribute("href")!,
+<<<<<<< HEAD
                         short,
                         name: teacherData.map(e => ({ name: `${e.name} ${e.surname}`, short: e.short })).filter(e => e.short === short)[0].name
+=======
+                        short: teach?.innerHTML!
+>>>>>>> 2e030259fe92367af05ac958214548bb46426dad
                     },
                     classroom: {
                         name: clas?.innerHTML!,
@@ -66,13 +80,20 @@ async function fetchTable() {
                 try {
                     const teach = g!.querySelector("a.n");
                     const clas = g!.querySelector("a.s");
+<<<<<<< HEAD
                     let short = teach?.innerHTML!
+=======
+>>>>>>> 2e030259fe92367af05ac958214548bb46426dad
                     les.push({
                         name: g.querySelector("span.p")!.innerHTML,
                         teacher: {
                             link: teach?.getAttribute("href")!,
+<<<<<<< HEAD
                             short,
                             name: teacherData.map(e => ({ name: `${e.name} ${e.surname}`, short: e.short })).filter(e => e.short === short)[0].name
+=======
+                            short: teach?.innerHTML!
+>>>>>>> 2e030259fe92367af05ac958214548bb46426dad
                         },
                         classroom: {
                             name: clas?.innerHTML!,
