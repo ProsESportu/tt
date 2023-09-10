@@ -11,11 +11,10 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.1.0",
+		"@sveltejs/adapter-vercel": "^3.0.3",
 		"@sveltejs/kit": "^1.24.1",
-<<<<<<< HEAD
+		"@vite-pwa/assets-generator": "^0.0.10",
 		"@vite-pwa/sveltekit": "^0.2.7",
-=======
->>>>>>> 2e030259fe92367af05ac958214548bb46426dad
 		"autoprefixer": "^10.4.15",
 		"flowbite-svelte": "^0.44.15",
 		"postcss": "^8.4.29",

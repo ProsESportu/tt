@@ -10,9 +10,17 @@
         NavHamburger,
         Navbar,
     } from "flowbite-svelte";
+    import { pwaInfo } from "virtual:pwa-info";
+
+    $: webManifestLink = pwaInfo ? pwaInfo.webManifest.linkTag : "";
     let modalOpen = false;
 </script>
 
+<svelte:head>
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png">
+    <meta name="theme-color" content="#c026d3">
+    {@html webManifestLink}
+</svelte:head>
 <div class="bg-white dark:bg-gray-800 min-h-screen">
     <Navbar let:hidden let:toggle fluid={true}>
         <DarkMode />

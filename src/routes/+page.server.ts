@@ -1,6 +1,8 @@
 import type { PageServerLoad } from './$types';
 import { parseHTML } from "linkedom";
 import teacherData from "$lib/data";
+import type { Config } from "@sveltejs/adapter-vercel";
+import { BYPASS_TOKEN } from "$env/static/private";
 export const load = (async (e) => {
     const [table, substitutions] = await Promise.all([fetchTable(), fetchSubstitutions()]);
 
@@ -12,7 +14,7 @@ interface lesson {
     teacher: {
         link: string,
         short: string,
-        name:string
+        name: string
     },
     classroom: {
         name: string,
@@ -48,7 +50,7 @@ async function fetchTable() {
             g!.querySelectorAll("td.l > span[style=font-size:85%]").forEach(h => {
                 const teach = h!.querySelector("a.n");
                 const clas = h!.querySelector("a.s");
-                const short=teach?.innerHTML!
+                const short = teach?.innerHTML!
                 les.push({
                     name: h.querySelector("span.p")!.innerHTML,
                     teacher: {
