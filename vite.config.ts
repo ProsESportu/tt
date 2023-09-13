@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 import { SvelteKitPWA } from "@vite-pwa/sveltekit";
 export default defineConfig({
 	plugins: [sveltekit(), SvelteKitPWA({
-		strategies: "injectManifest",
+		strategies: "generateSW",
 		srcDir: "src",
 		manifest: {
 			short_name: 'tt',
