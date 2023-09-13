@@ -103,8 +103,8 @@ async function fetchSubstitutions() {
         method: "POST",
 
     });
-    const subLinks: string[] = await res.json()
-    return await Promise.all(subLinks.map(fetchSubstitution))
+    const subLinks: string[] | object = await res.json()
+    return await Promise.all(Array.isArray(subLinks) ? subLinks.map(e => fetchSubstitution(e)) : Object.values(subLinks).map(e => fetchSubstitution(e)))
 }
 async function fetchSubstitution(link: string) {
     const httpHeaders = new Headers();
