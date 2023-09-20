@@ -9,6 +9,7 @@
         Modal,
         NavHamburger,
         Navbar,
+        Badge,
     } from "flowbite-svelte";
     import { pwaInfo } from "virtual:pwa-info";
 
@@ -49,6 +50,7 @@
             <Label>Isr refresh token:</Label>
             <Input name="token" />
         </form>
+        <Badge>{new Intl.DateTimeFormat("pl-PL",{timeStyle:"medium",dateStyle:"short"}).format(new Date())}</Badge>
     </Modal>
     <slot />
 </div>
