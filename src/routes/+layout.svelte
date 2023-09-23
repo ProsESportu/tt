@@ -1,5 +1,6 @@
 <script lang="ts">
     import "../app.css";
+    import type { LayoutServerData } from "./$types";
     import {
         Button,
         DarkMode,
@@ -12,7 +13,7 @@
         Badge,
     } from "flowbite-svelte";
     import { pwaInfo } from "virtual:pwa-info";
-
+    export let data:LayoutServerData;
     $: webManifestLink = pwaInfo ? pwaInfo.webManifest.linkTag : "";
     let modalOpen = false;
 </script>
@@ -50,7 +51,7 @@
             <Label>Isr refresh token:</Label>
             <Input name="token" />
         </form>
-        <Badge>{new Intl.DateTimeFormat("pl-PL",{timeStyle:"medium",dateStyle:"short"}).format(new Date())}</Badge>
+        <Badge>{new Intl.DateTimeFormat("pl-PL",{timeStyle:"medium",dateStyle:"short"}).format(data.ts)}</Badge>
     </Modal>
     <slot />
 </div>

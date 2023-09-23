@@ -1,8 +1,6 @@
 import type { PageServerLoad } from './$types';
 import { parseHTML } from "linkedom";
 import teacherData from "$lib/data";
-import type { Config } from "@sveltejs/adapter-vercel";
-import { BYPASS_TOKEN } from "$env/static/private";
 export const load = (async (e) => {
     const [table, substitutions] = await Promise.all([fetchTable(), fetchSubstitutions()]);
 

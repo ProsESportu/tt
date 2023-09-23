@@ -45,8 +45,7 @@
                                 <div class="flex flex-col">
                                     <Badge
                                         href={`https://zsem.edu.pl/plany/plany/${lesson.teacher.link}`}
-                                        class="m-2"
-                                        >{lesson.teacher.name}</Badge
+                                        class="m-2">{lesson.teacher.name}</Badge
                                     >
                                     <Badge
                                         href={`https://zsem.edu.pl/plany/plany/${lesson.classroom.link}`}
@@ -64,9 +63,9 @@
 <Hr
     hrClass="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"
 />
-<div class="flex mx-4">
-    <Checkbox bind:checked={isOnly} />
-    <Label>3p</Label>
+<div class="flex m-4">
+    <Checkbox bind:checked={isOnly} id="filter" />
+    <Label for="filter">3p</Label>
 </div>
 {#each data.substitutions as substitution}
     <div>
@@ -78,7 +77,7 @@
                     <TableHeadCell>{head}</TableHeadCell>
                 {/each}
             </TableHead>
-            {#each substitution.rows.filter(e=>isOnly? e[1]==="3p":true) as row}
+            {#each substitution.rows.filter( (e) => (isOnly ? e[2]?.match(/3p\*/) : true) ) as row}
                 <TableBodyRow>
                     {#each row as cell}
                         <TableBodyCell>
