@@ -14,13 +14,13 @@
     import type { PageServerData } from "./$types";
 
     export let data: PageServerData;
-    let isOnly = false;
+    let isOnly = true;
 </script>
 
 <svelte:head>
     <title>{data.table.title}</title>
 </svelte:head>
-<Table hoverable={true}>
+<Table hoverable={true} striped={true} shadow={true}>
     <TableHead>
         {#each data.table.head as header}
             <TableHeadCell>
@@ -34,7 +34,7 @@
                 {data.table.nrs[index]}
             </TableBodyCell>
             <TableBodyCell>
-                {data.table.hours[index]}
+                <div class="sticky">{data.table.hours[index]}</div>
             </TableBodyCell>
             {#each row as cell}
                 <TableBodyCell>
@@ -49,6 +49,7 @@
                                     >
                                     <Badge
                                         href={`https://zsem.edu.pl/plany/plany/${lesson.classroom.link}`}
+                                        class="m-2"
                                         >{lesson.classroom.name}</Badge
                                     >
                                 </div>
@@ -71,13 +72,13 @@
     <div>
         <Heading>{substitution.head}</Heading>
         <Hr />
-        <Table>
+        <Table striped={true} shadow={true} hoverable={true}>
             <TableHead>
                 {#each substitution.headers as head}
                     <TableHeadCell>{head}</TableHeadCell>
                 {/each}
             </TableHead>
-            {#each substitution.rows.filter( (e) => (isOnly ? e[2]?.match(/3p\*/) : true) ) as row}
+            {#each substitution.rows.filter( (e) => (isOnly ? e[2]?.match(/3p/gmi) : true) ) as row}
                 <TableBodyRow>
                     {#each row as cell}
                         <TableBodyCell>
