@@ -16,17 +16,18 @@
 		"@vite-pwa/assets-generator": "^0.0.10",
 		"@vite-pwa/sveltekit": "^0.2.7",
 		"autoprefixer": "^10.4.16",
-		"flowbite-svelte": "^0.44.17",
-		"postcss": "^8.4.30",
+		"flowbite-svelte": "^0.44.18",
+		"lightningcss": "^1.22.0",
+		"postcss": "^8.4.31",
 		"svelte": "^4.2.1",
 		"svelte-check": "^3.5.2",
 		"tailwindcss": "^3.3.3",
 		"tslib": "^2.6.2",
 		"typescript": "^5.2.2",
-		"vite": "^4.4.9"
+		"vite": "^4.4.11"
 	},
 	"type": "module",
 	"dependencies": {
-		"linkedom": "^0.15.3"
+		"linkedom": "^0.15.4"
 	}
 }
