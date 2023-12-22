@@ -101,8 +101,11 @@ async function fetchSubstitutions() {
         method: "POST",
 
     });
-    const subLinks: string[] | object = await res.json()
-    return await Promise.all(Array.isArray(subLinks) ? subLinks.map(e => fetchSubstitution(e)) : Object.values(subLinks).map(e => fetchSubstitution(e)))
+    const subLinks: string[] | object | null = await res.json()
+    if (subLinks) {
+        return await Promise.all(Array.isArray(subLinks) ? subLinks.map(e => fetchSubstitution(e)) : Object.values(subLinks).map(e => fetchSubstitution(e)))
+    }
+    else return [];
 }
 async function fetchSubstitution(link: string) {
     const httpHeaders = new Headers();

@@ -33,8 +33,8 @@
             <TableBodyCell>
                 {data.table.nrs[index]}
             </TableBodyCell>
-            <TableBodyCell>
-                <div class="sticky">{data.table.hours[index]}</div>
+            <TableBodyCell class="sticky">
+                {data.table.hours[index]}
             </TableBodyCell>
             {#each row as cell}
                 <TableBodyCell>
