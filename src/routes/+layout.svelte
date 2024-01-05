@@ -1,6 +1,7 @@
 <script lang="ts">
     import "../app.css";
     import type { LayoutServerData } from "./$types";
+    import { colors } from "$lib/data";
     import {
         Button,
         DarkMode,
@@ -11,16 +12,27 @@
         NavHamburger,
         Navbar,
         Badge,
+        Select,
     } from "flowbite-svelte";
     import { pwaInfo } from "virtual:pwa-info";
-    export let data:LayoutServerData;
+    import { browser } from "$app/environment";
+    export let data: LayoutServerData;
     $: webManifestLink = pwaInfo ? pwaInfo.webManifest.linkTag : "";
     let modalOpen = false;
+    let theme = browser
+        ? localStorage.getItem("theme") || "fuchsia"
+        : "fuchsia";
+    $: {
+        if (browser) {
+            document.documentElement.setAttribute("data-theme", theme);
+            localStorage.setItem("theme", theme);
+        }
+    }
 </script>
 
 <svelte:head>
-    <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png">
-    <meta name="theme-color" content="#c026d3">
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
+    <meta name="theme-color" content="#c026d3" />
     {@html webManifestLink}
 </svelte:head>
 <div class="bg-white dark:bg-gray-800 min-h-screen">
@@ -51,7 +63,18 @@
             <Label>Isr refresh token:</Label>
             <Input name="token" />
         </form>
-        <Badge>{new Intl.DateTimeFormat("pl-PL",{timeStyle:"medium",dateStyle:"short"}).format(data.ts)}</Badge>
+        <Badge
+            >{new Intl.DateTimeFormat("pl-PL", {
+                timeStyle: "medium",
+                dateStyle: "short",
+            }).format(data.ts)}</Badge
+        >
+        <Select
+            bind:value={theme}
+            items={Object.keys(colors).map((e) => {
+                return { value: e, name: e };
+            })}
+        />
     </Modal>
     <slot />
 </div>

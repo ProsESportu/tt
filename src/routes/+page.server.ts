@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
 import { parseHTML } from "linkedom";
-import teacherData from "$lib/data";
+import {teach as teacherData} from "$lib/data";
 export const load = (async (e) => {
     const [table, substitutions] = await Promise.all([fetchTable(), fetchSubstitutions()]);
 
@@ -109,7 +109,7 @@ async function fetchSubstitutions() {
 }
 async function fetchSubstitution(link: string) {
     const httpHeaders = new Headers();
-    httpHeaders.set("Authorization", "Basic " + btoa("zsem:123456"));
+    httpHeaders.set("Authorization", "Basic " + Buffer.from("zsem:123456").toString("base64"));
     const res = await fetch(`https://zsem.edu.pl/zastepstwa/${link}.html`, { headers: httpHeaders });
     const text = await res.text();
     const parse = parseHTML(text);
