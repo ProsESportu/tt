@@ -1,8 +1,9 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import { SvelteKitPWA } from "@vite-pwa/sveltekit";
+import { purgeCss } from "vite-plugin-tailwind-purgecss";
 export default defineConfig({
-	plugins: [sveltekit(), SvelteKitPWA({
+	plugins: [sveltekit(), purgeCss(), SvelteKitPWA({
 		strategies: "generateSW",
 		srcDir: "src",
 		manifest: {
