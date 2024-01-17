@@ -51,7 +51,7 @@
                                 <div class="flex flex-col">
                                     {#if lesson.clas}
                                         <Badge
-                                            href={`/process?link=${encodeURI(
+                                            href={`/process/${encodeURI(
                                                 lesson.clas.link,
                                             )}`}
                                             class="m-2"
@@ -60,7 +60,7 @@
                                     {/if}
                                     {#if lesson.teacher}
                                         <Badge
-                                            href={`/process?link=${encodeURI(
+                                            href={`/process/${encodeURI(
                                                 lesson.teacher.link,
                                             )}`}
                                             class="m-2"
@@ -69,7 +69,7 @@
                                     {/if}
                                     {#if lesson.classroom}
                                         <Badge
-                                            href={`/process?link=${encodeURI(
+                                            href={`/process/${encodeURI(
                                                 lesson.classroom.link,
                                             )}`}
                                             class="m-2"
