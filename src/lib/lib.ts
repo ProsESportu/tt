@@ -4,11 +4,11 @@ import type { lesson } from './types';
 
 export async function fetchTable(link: string = "https://www.zsem.edu.pl/plany/plany/o15.html") {
     const res = await fetch(link);
-    console.log(res)
+    // console.log(res)
     const text = await res.text();
-    console.log(text)
+    // console.log(text)
     const parse = parseHTML(text);
-    const title = parse.document.querySelector("span.tytulnapis")!.innerHTML;
+    const title = parse.document.querySelector("span.tytulnapis")?.innerHTML;
     const table = parse.document.querySelector("table.tabela");
 
     const head: string[] = [];
