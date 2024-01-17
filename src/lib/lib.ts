@@ -81,7 +81,7 @@ export async function fetchTable(link: string = "https://www.zsem.edu.pl/plany/p
             lessons.push(cells);
         }
     });
-    return { title, head, lessons, hours, nrs, url: res.url };
+    return { title, head, lessons, hours, nrs, url: res.url, ts: new Date() };
 }
 
 
@@ -123,5 +123,5 @@ async function fetchSubstitution(link: string) {
         }
 
     })
-    return { head, headers, rows }
+    return { head, headers, rows, ts: new Date() }
 }

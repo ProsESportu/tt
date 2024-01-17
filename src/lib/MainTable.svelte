@@ -8,7 +8,7 @@
         TableHead,
         TableHeadCell,
         Button,
-        P
+        P,
     } from "flowbite-svelte";
     import type { lessons } from "./types";
     export let table: lessons;
@@ -17,7 +17,15 @@
 <svelte:head>
     <title>{table.title}</title>
 </svelte:head>
-<P size="6xl">{table.title}</P>
+<div class="flex justify-center items-center">
+    <P size="6xl">{table.title}</P>
+    <Badge class="m-4"
+        >{new Intl.DateTimeFormat("pl-PL", {
+            timeStyle: "medium",
+            dateStyle: "short",
+        }).format(table.ts)}</Badge
+    >
+</div>
 <Table hoverable={true} striped={true} shadow={true}>
     <TableHead>
         {#each table.head as header}

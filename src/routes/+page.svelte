@@ -9,4 +9,6 @@
 </script>
 
 <MainTable table={data.table}></MainTable>
-<SubstitutionsTable substitutions={data.substitutions}></SubstitutionsTable>
+{#each data.substitutions as substitution}
+    <SubstitutionsTable {substitution}></SubstitutionsTable>
+{/each}

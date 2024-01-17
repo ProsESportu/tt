@@ -11,12 +11,11 @@
         Modal,
         NavHamburger,
         Navbar,
-        Badge,
         Select,
     } from "flowbite-svelte";
     import { pwaInfo } from "virtual:pwa-info";
     import { browser } from "$app/environment";
-    export let data: LayoutServerData;
+    // export let data: LayoutServerData;
     $: webManifestLink = pwaInfo ? pwaInfo.webManifest.linkTag : "";
     let modalOpen = false;
     let theme = browser
@@ -43,15 +42,6 @@
                     d="M16 1v5h-5M2 19v-5h5m10-4a8 8 0 0 1-14.947 3.97M1 10a8 8 0 0 1 14.947-3.97"
                 />
             </svg>`;
-    function refresh(event: SubmitEvent) {
-        const form_data = new FormData(event.target as HTMLFormElement);
-        const token = form_data.get("token");
-        if (token) {
-            document.cookie = `__prerender_bypass=${token}; path=/;${new Date(
-                Date.now() + 1000 * 30,
-            ).toUTCString()}`;
-        }
-    }
 </script>
 
 <svelte:head>
@@ -60,24 +50,18 @@
     {@html webManifestLink}
 </svelte:head>
 <div class="bg-white dark:bg-gray-800">
-    <Navbar let:hidden let:toggle fluid={true}>
+    <Navbar let:hidden let:toggle>
         <DarkMode />
         <NavHamburger on:click={toggle} />
         <Button on:click={() => (modalOpen = true)}>{@html refreshIcon}</Button>
     </Navbar>
     <Modal bind:open={modalOpen}>
         <Heading>Insert refresh token</Heading>
-        <form action="/" on:submit={refresh}>
+        <form>
             <Label>Isr refresh token:</Label>
             <Input name="token" type="text" />
             <!-- <Button type="submit">{@html refreshIcon}</Button> -->
         </form>
-        <Badge
-            >{new Intl.DateTimeFormat("pl-PL", {
-                timeStyle: "medium",
-                dateStyle: "short",
-            }).format(data.ts)}</Badge
-        >
         <Select
             bind:value={theme}
             items={Object.keys(colors).map((e) => {
