@@ -17,9 +17,9 @@
 <svelte:head>
     <title>{table.title}</title>
 </svelte:head>
-<div class="flex justify-center items-center">
-    <P size="6xl">{table.title}</P>
-    <Badge class="m-4"
+<div class="flex justify-center items-center max-w-full">
+    <P size="6xl">{table.title?.split(" ")[0]}</P>
+    <Badge class="m-4" href={table.url}
         >{new Intl.DateTimeFormat("pl-PL", {
             timeStyle: "medium",
             dateStyle: "short",
@@ -85,7 +85,7 @@
         </TableBodyRow>
     {/each}
 </Table>
-<Button href={table.url}>Get raw</Button>
+<!-- <Button href={table.url}>Get raw</Button> -->
 <Hr
     hrClass="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"
 />
