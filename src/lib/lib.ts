@@ -96,6 +96,7 @@ export async function fetchSubstitutions() {
         method: "POST",
 
     });
+    if (!res.ok) return [];
     const subLinks: string[] | object | null = await res.json()
     if (subLinks) {
         return await Promise.all(Array.isArray(subLinks) ? subLinks.map(e => fetchSubstitution(e)) : Object.values(subLinks).map(e => fetchSubstitution(e)))
