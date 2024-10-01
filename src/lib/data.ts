@@ -92,6 +92,7 @@ export const teach = [
   { short: "MZ", name: "Jarosław", surname: "Mularczyk" },
   { short: "KX", name: "Katarzyna", surname: "Maj" },
   { short: "WG", name: "Wojciech", surname: "Gałach" },
+  { short: "WJ", name: "Kamil", surname: "Wojnarowski" },
 ] as const;
 export const colors = {
   sv: {

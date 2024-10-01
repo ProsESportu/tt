@@ -17,7 +17,7 @@
 <svelte:head>
     <title>{table.title}</title>
 </svelte:head>
-<div class="flex justify-center items-center max-w-full">
+<div class="flex justify-center items-center max-w-full flex-wrap">
     <P size="6xl">{table.title?.split(" ")[0]}</P>
     <Badge class="m-4" href={table.url}
         >{new Intl.DateTimeFormat("pl-PL", {
