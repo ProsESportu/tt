@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import "../app.css";
     import type { LayoutServerData } from "./$types";
     import { colors } from "$lib/data";
@@ -15,18 +17,23 @@
     } from "flowbite-svelte";
     import { pwaInfo } from "virtual:pwa-info";
     import { browser } from "$app/environment";
+    interface Props {
+        children?: import('svelte').Snippet;
+    }
+
+    let { children }: Props = $props();
     // export let data: LayoutServerData;
-    $: webManifestLink = pwaInfo ? pwaInfo.webManifest.linkTag : "";
-    let modalOpen = false;
-    let theme = browser
+    let webManifestLink = $derived(pwaInfo ? pwaInfo.webManifest.linkTag : "");
+    let modalOpen = $state(false);
+    let theme = $state(browser
         ? localStorage.getItem("theme") || "fuchsia"
-        : "fuchsia";
-    $: {
+        : "fuchsia");
+    $effect(()=>{
         if (browser) {
             document.documentElement.setAttribute("data-theme", theme);
             localStorage.setItem("theme", theme);
         }
-    }
+    });
     const refreshIcon = `<svg
                 class="w-6 h-6 text-white"
                 aria-hidden="true"
@@ -69,5 +76,5 @@
             })}
         />
     </Modal>
-    <slot />
+    {@render children?.()}
 </div>

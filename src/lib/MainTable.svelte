@@ -12,7 +12,11 @@
         TableBody,
     } from "flowbite-svelte";
     import type { lessons } from "./types";
-    export let table: lessons;
+    interface Props {
+        table: lessons;
+    }
+
+    let { table }: Props = $props();
 </script>
 
 <svelte:head>

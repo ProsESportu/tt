@@ -14,9 +14,13 @@
         TableBody,
     } from "flowbite-svelte";
     import type { substitutions } from "./types";
-    export let substitution: substitutions[number];
-    let isOnly = true;
-    let searchTerm = "";
+    interface Props {
+        substitution: substitutions[number];
+    }
+
+    let { substitution }: Props = $props();
+    let isOnly = $state(true);
+    let searchTerm = $state("");
 </script>
 
 <div class="flex m-4">
