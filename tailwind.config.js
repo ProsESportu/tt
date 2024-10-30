@@ -316,9 +316,10 @@ export default {
     "./src/**/*.{html,js,svelte,ts}",
     "./node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}",
   ],
-
+  // colors: colors,
   plugins: [
     createThemes(colors),
+    //anti foramt comment
     import("flowbite/plugin"),
   ],
   darkMode: "class",

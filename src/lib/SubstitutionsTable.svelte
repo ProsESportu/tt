@@ -11,6 +11,7 @@
         TableHeadCell,
         TableSearch,
         Badge,
+        TableBody,
     } from "flowbite-svelte";
     import type { substitutions } from "./types";
     export let substitution: substitutions[number];
@@ -31,29 +32,26 @@
 <div>
     <Heading>{substitution.head}</Heading>
     <Hr />
-    <TableSearch
-        striped={true}
-        shadow={true}
-        hoverable={true}
-        bind:inputValue={searchTerm}
-    >
+    <TableSearch striped={true} hoverable={true} bind:inputValue={searchTerm}>
         <TableHead>
             {#each substitution.headers as head}
                 <TableHeadCell>{head}</TableHeadCell>
             {/each}
         </TableHead>
-        {#each substitution.rows
-            .filter((e) => (isOnly ? e[2]?.match(/3p/gim) : true))
-            .filter((e) => e.some((f) => f
-                            .toLowerCase()
-                            .indexOf(searchTerm.toLowerCase()) != -1)) as row}
-            <TableBodyRow>
-                {#each row as cell}
-                    <TableBodyCell>
-                        {cell}
-                    </TableBodyCell>
-                {/each}
-            </TableBodyRow>
-        {/each}
+        <TableBody>
+            {#each substitution.rows
+                .filter((e) => (isOnly ? e[2]?.match(/3p/gim) : true))
+                .filter((e) => e.some((f) => f
+                                .toLowerCase()
+                                .indexOf(searchTerm.toLowerCase()) != -1)) as row}
+                <TableBodyRow>
+                    {#each row as cell}
+                        <TableBodyCell>
+                            {cell}
+                        </TableBodyCell>
+                    {/each}
+                </TableBodyRow>
+            {/each}
+        </TableBody>
     </TableSearch>
 </div>

@@ -9,6 +9,7 @@
         TableHeadCell,
         Button,
         P,
+        TableBody,
     } from "flowbite-svelte";
     import type { lessons } from "./types";
     export let table: lessons;
@@ -34,56 +35,58 @@
             </TableHeadCell>
         {/each}
     </TableHead>
-    {#each table.lessons as row, index}
-        <TableBodyRow>
-            <TableBodyCell>
-                {table.nrs[index]}
-            </TableBodyCell>
-            <TableBodyCell class="sticky">
-                {table.hours[index]}
-            </TableBodyCell>
-            {#each row as cell}
+    <TableBody>
+        {#each table.lessons as row, index}
+            <TableBodyRow>
                 <TableBodyCell>
-                    <div class="flex flex-col">
-                        {#each cell as lesson}
-                            <div class="flex justify-around items-center">
-                                <p>{lesson.name}</p>
-                                <div class="flex flex-col">
-                                    {#if lesson.clas}
-                                        <Badge
-                                            href={`/process/${encodeURI(
-                                                lesson.clas.link,
-                                            )}`}
-                                            class="m-2"
-                                            >{lesson.clas.name}</Badge
-                                        >
-                                    {/if}
-                                    {#if lesson.teacher}
-                                        <Badge
-                                            href={`/process/${encodeURI(
-                                                lesson.teacher.link,
-                                            )}`}
-                                            class="m-2"
-                                            >{lesson.teacher.name}</Badge
-                                        >
-                                    {/if}
-                                    {#if lesson.classroom}
-                                        <Badge
-                                            href={`/process/${encodeURI(
-                                                lesson.classroom.link,
-                                            )}`}
-                                            class="m-2"
-                                            >{lesson.classroom.name}</Badge
-                                        >
-                                    {/if}
-                                </div>
-                            </div>
-                        {/each}
-                    </div>
+                    {table.nrs[index]}
                 </TableBodyCell>
-            {/each}
-        </TableBodyRow>
-    {/each}
+                <TableBodyCell class="sticky">
+                    {table.hours[index]}
+                </TableBodyCell>
+                {#each row as cell}
+                    <TableBodyCell>
+                        <div class="flex flex-col">
+                            {#each cell as lesson}
+                                <div class="flex justify-around items-center">
+                                    <p>{lesson.name}</p>
+                                    <div class="flex flex-col">
+                                        {#if lesson.clas}
+                                            <Badge
+                                                href={`/process/${encodeURI(
+                                                    lesson.clas.link,
+                                                )}`}
+                                                class="m-2"
+                                                >{lesson.clas.name}</Badge
+                                            >
+                                        {/if}
+                                        {#if lesson.teacher}
+                                            <Badge
+                                                href={`/process/${encodeURI(
+                                                    lesson.teacher.link,
+                                                )}`}
+                                                class="m-2"
+                                                >{lesson.teacher.name}</Badge
+                                            >
+                                        {/if}
+                                        {#if lesson.classroom}
+                                            <Badge
+                                                href={`/process/${encodeURI(
+                                                    lesson.classroom.link,
+                                                )}`}
+                                                class="m-2"
+                                                >{lesson.classroom.name}</Badge
+                                            >
+                                        {/if}
+                                    </div>
+                                </div>
+                            {/each}
+                        </div>
+                    </TableBodyCell>
+                {/each}
+            </TableBodyRow>
+        {/each}
+    </TableBody>
 </Table>
 <!-- <Button href={table.url}>Get raw</Button> -->
 <Hr
