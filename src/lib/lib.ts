@@ -6,6 +6,7 @@ export async function fetchTable(
   link: string = "https://www.zsem.edu.pl/plany/plany/o9.html",
 ) {
   const res = await fetch(link);
+  await new Promise<void>((resolve) => setTimeout(() => resolve(), 500));
   // console.log(res)
   const text = await res.text();
   // console.log(text)

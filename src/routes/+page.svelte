@@ -2,6 +2,7 @@
     import MainTable from "$lib/MainTable.svelte";
 
     import SubstitutionsTable from "$lib/SubstitutionsTable.svelte";
+    import { Spinner } from "flowbite-svelte";
 
     import type { PageServerData } from "./$types";
 
@@ -13,6 +14,7 @@
 </script>
 
 <MainTable table={data.table}></MainTable>
+
 {#each data.substitutions as substitution}
     <SubstitutionsTable {substitution}></SubstitutionsTable>
 {/each}

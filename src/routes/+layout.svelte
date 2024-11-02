@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
+    import { refreshIcon } from "$lib/data"
 
     import "../app.css";
     import type { LayoutServerData } from "./$types";
@@ -14,9 +14,11 @@
         NavHamburger,
         Navbar,
         Select,
+        Spinner,
     } from "flowbite-svelte";
     import { pwaInfo } from "virtual:pwa-info";
     import { browser } from "$app/environment";
+    import { navigating } from "$app/stores";
     interface Props {
         children?: import('svelte').Snippet;
     }
@@ -34,21 +36,7 @@
             localStorage.setItem("theme", theme);
         }
     });
-    const refreshIcon = `<svg
-                class="w-6 h-6 text-white"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 20"
-            >
-                <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M16 1v5h-5M2 19v-5h5m10-4a8 8 0 0 1-14.947 3.97M1 10a8 8 0 0 1 14.947-3.97"
-                />
-            </svg>`;
+
 </script>
 
 <svelte:head>
@@ -60,7 +48,13 @@
     <Navbar let:hidden let:toggle>
         <DarkMode />
         <NavHamburger on:click={toggle} />
-        <Button on:click={() => (modalOpen = true)}>{@html refreshIcon}</Button>
+        <Button on:click={() => (modalOpen = true)}>
+            {#if $navigating}
+                <Spinner color="white" size={6}/>
+            {:else}
+                {@html refreshIcon}
+            {/if}
+            </Button>
     </Navbar>
     <Modal bind:open={modalOpen}>
         <Heading>Insert refresh token</Heading>
