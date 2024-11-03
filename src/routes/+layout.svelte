@@ -44,8 +44,8 @@
     <meta name="theme-color" content="#c026d3" />
     {@html webManifestLink}
 </svelte:head>
-<div class="bg-white dark:bg-gray-800">
-    <Navbar let:hidden let:toggle>
+<!-- <div class="bg-white dark:bg-gray-800"> -->
+    <Navbar let:hidden let:toggle class={$navigating ? "fixed z-10 start-0 top-0" : ""}>
         <DarkMode />
         <NavHamburger on:click={toggle} />
         <Button on:click={() => (modalOpen = true)}>
@@ -70,5 +70,8 @@
             })}
         />
     </Modal>
+    {#if $navigating}
+        <div class="w-full h-16"></div>
+    {/if}
     {@render children?.()}
-</div>
+<!-- </div> -->

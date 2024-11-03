@@ -34,7 +34,7 @@
 <Table hoverable={true} striped={true} shadow={true}>
     <TableHead>
         {#each table.head as header}
-            <TableHeadCell>
+            <TableHeadCell class="text-center">
                 {header}
             </TableHeadCell>
         {/each}
@@ -45,7 +45,7 @@
                 <TableBodyCell>
                     {table.nrs[index]}
                 </TableBodyCell>
-                <TableBodyCell class="sticky">
+                <TableBodyCell>
                     {table.hours[index]}
                 </TableBodyCell>
                 {#each row as cell}
