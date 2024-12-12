@@ -1,16 +1,13 @@
 <script lang="ts">
     import MainTable from "$lib/MainTable.svelte";
-
     import SubstitutionsTable from "$lib/SubstitutionsTable.svelte";
-    import { Spinner } from "flowbite-svelte";
-
     import type { PageServerData } from "./$types";
 
-    interface Props {
+    let {
+        data,
+    }: {
         data: PageServerData;
-    }
-
-    let { data }: Props = $props();
+    } = $props();
 </script>
 
 <MainTable table={data.table}></MainTable>

@@ -27,9 +27,9 @@
     // export let data: LayoutServerData;
     let webManifestLink = $derived(pwaInfo ? pwaInfo.webManifest.linkTag : "");
     let modalOpen = $state(false);
-    let theme = $state(browser
+    let theme = $state((browser
         ? localStorage.getItem("theme") || "fuchsia"
-        : "fuchsia");
+        : "fuchsia") as keyof typeof colors);
     $effect(()=>{
         if (browser) {
             document.documentElement.setAttribute("data-theme", theme);
@@ -41,7 +41,7 @@
 
 <svelte:head>
     <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
-    <meta name="theme-color" content="#c026d3" />
+    <meta name="theme-color" content={colors[theme].primary[600]} />
     {@html webManifestLink}
 </svelte:head>
 <!-- <div class="bg-white dark:bg-gray-800"> -->
