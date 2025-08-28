@@ -16,7 +16,7 @@
         "@vite-pwa/sveltekit": "^1.0.0",
         "flowbite": "^3.1.2",
         "flowbite-svelte": "^1.13.2",
-        "flowbite-svelte-icons": "^2.3.0",
+        "flowbite-svelte-icons": "^3.0.0",
         "svelte": "^5.38.6",
         "svelte-check": "^4.3.1",
         "tailwindcss": "^4.1.12",
@@ -597,7 +597,7 @@
 
     "flowbite-svelte": ["flowbite-svelte@1.13.2", "", { "dependencies": { "@floating-ui/dom": "^1.7.4", "@floating-ui/utils": "^0.2.10", "apexcharts": "^5.3.4", "clsx": "^2.1.1", "date-fns": "^4.1.0", "flowbite": "^3.1.2", "tailwind-merge": "^3.3.1" }, "peerDependencies": { "svelte": "^5.29.0", "tailwindcss": "^4.1.4" } }, "sha512-pScBq+vY0O1xXFhlvvAllszcf3KCzTcg77TLX8IiKVZnBSoDGqTLC/FYOyCpScc+ZAqZO6gTnqgODWMi6l6A7g=="],
 
-    "flowbite-svelte-icons": ["flowbite-svelte-icons@2.3.0", "", { "dependencies": { "clsx": "^2.1.1", "tailwind-merge": "^3.3.1" }, "peerDependencies": { "svelte": "^5.0.0" } }, "sha512-D7EeVAGt3NtufTjps8xKRYyZpAaQbuX+8PkohVqG07RsJf9pWJHwZ+RPBi3kUlECnq0WtYU/3jnLuz7Km4Y79g=="],
+    "flowbite-svelte-icons": ["flowbite-svelte-icons@3.0.0", "", { "dependencies": { "clsx": "^2.1.1", "tailwind-merge": "^3.3.1" }, "peerDependencies": { "svelte": "^5.0.0" } }, "sha512-7qm8vLOW4uHq1UeDDx0DLrLZXiE8H0i/XCFjGMsSAhIFfpkyIwlE4qXlmy8mjO4p+rzKNbVALQIoDEnuo8tPgg=="],
 
     "for-each": ["for-each@0.3.5", "", { "dependencies": { "is-callable": "^1.2.7" } }, "sha512-dKx12eRCVIzqCxFGplyFKJMPvLEWgmNtUrpTiJIR5u97zEhRG8ySrtboPHZXx7daLxQVrl643cTzbab2tkQjxg=="],
 
