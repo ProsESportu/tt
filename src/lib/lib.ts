@@ -1,9 +1,9 @@
 import { parseHTML } from "linkedom";
-import { teach as teacherData } from "$lib/data";
+import { PROTOCOL, teach as teacherData } from "$lib/data";
 import type { lesson } from "./types";
 
 export async function fetchTable(
-  link: string = "https://www.zsem.edu.pl/plany/plany/o9.html",
+  link: string = `${PROTOCOL}://www.zsem.edu.pl/plany/plany/o4.html`,
 ) {
   const res = await fetch(link);
   await new Promise<void>((resolve) => setTimeout(() => resolve(), 500));
@@ -110,14 +110,17 @@ export async function fetchTable(
 }
 
 export async function fetchSubstitutions() {
-  const res = await fetch("https://zsem.edu.pl/plany/scripts/powrot.php", {
-    headers: {
-      "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+  const res = await fetch(
+    `${PROTOCOL}://zsem.edu.pl/plany/scripts/powrot.php`,
+    {
+      headers: {
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+      },
+      body: "czegopragniesz=zastepstw",
+      method: "POST",
     },
-    body: "czegopragniesz=zastepstw",
-    method: "POST",
-  });
-  if (!res.ok) return [];
+  ).catch((e) => null);
+  if (!res || !res.ok) return [];
   const subLinks: string[] | object | null = await res.json();
   if (subLinks) {
     return await Promise.all(
@@ -133,7 +136,7 @@ async function fetchSubstitution(link: string) {
     "Authorization",
     "Basic " + Buffer.from("zsem:123456").toString("base64"),
   );
-  const res = await fetch(`https://zsem.edu.pl/zastepstwa/${link}.html`, {
+  const res = await fetch(`${PROTOCOL}://zsem.edu.pl/zastepstwa/${link}.html`, {
     headers: httpHeaders,
   });
   const text = await res.text();
