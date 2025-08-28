@@ -1,3 +1,4 @@
+export const PROTOCOL = "http";
 export const teach = [
   { short: "Ba", name: "Alicja", surname: "Baran" },
   { short: "Kd", name: "Krzysztof", surname: "Adamek" },
