@@ -100,6 +100,11 @@ export async function fetchTable(
           });
         } catch (e) {}
       }
+      if (les.length <= 0) {
+        if (g.innerHTML.search(/\&\#\d+/i) == -1) {
+          les.push({ name: g.innerHTML });
+        }
+      }
       cells.push(les);
     });
     if (isHead.length == 0) {
