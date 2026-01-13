@@ -60,7 +60,11 @@
                                                 href={`/process/${encodeURI(
                                                     lesson.clas.link,
                                                 )}`}
-                                                class="m-2"
+                                                classes={{
+                                                    linkClass:
+                                                        "w-full justify-center",
+                                                }}
+                                                class="m-2 "
                                                 >{lesson.clas.name}</Badge
                                             >
                                         {/if}
@@ -70,7 +74,10 @@
                                                     lesson.teacher.link,
                                                 )}`}
                                                 class="m-2"
-                                                >{lesson.teacher.name}</Badge
+                                                classes={{
+                                                    linkClass:
+                                                        "w-full justify-center",
+                                                }}>{lesson.teacher.name}</Badge
                                             >
                                         {/if}
                                         {#if lesson.classroom}
@@ -79,6 +86,10 @@
                                                     lesson.classroom.link,
                                                 )}`}
                                                 class="m-2"
+                                                classes={{
+                                                    linkClass:
+                                                        "w-full justify-center",
+                                                }}
                                                 >{lesson.classroom.name}</Badge
                                             >
                                         {/if}
